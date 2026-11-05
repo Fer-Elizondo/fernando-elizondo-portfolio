@@ -1,0 +1,29 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#inicio" aria-label="Fernando Elizondo, ir al inicio" (click)="closeMenu()">
+      <span class="brand-mark" aria-hidden="true">FE</span>
+      <span class="brand-name">Fernando Elizondo<span class="brand-dot">.</span></span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-navigation"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggleMenu()"
+    >
+      @if (menuOpen()) { <svg lucideX [size]="20" aria-hidden="true"></svg> }
+      @else { <svg lucideMenu [size]="20" aria-hidden="true"></svg> }
+    </button>
+
+    <nav id="primary-navigation" class="navigation" [class.is-open]="menuOpen()" aria-label="Navegación principal">
+      <a href="#inicio" [class.is-active]="activeSection() === 'inicio'" (click)="closeMenu()">Inicio</a>
+      <a href="#sobre-mi" [class.is-active]="activeSection() === 'sobre-mi'" (click)="closeMenu()">Sobre mí</a>
+      <a href="#tecnologias" [class.is-active]="activeSection() === 'tecnologias'" (click)="closeMenu()">Tecnologías</a>
+      <a class="nav-contact" href="#contacto" [class.is-active]="activeSection() === 'contacto'" (click)="closeMenu()">
+        Contacto <svg lucideArrowUpRight [size]="15" aria-hidden="true"></svg>
+      </a>
+    </nav>
+  </div>
+</header>
