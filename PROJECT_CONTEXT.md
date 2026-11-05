@@ -20,7 +20,8 @@ Crear el sitio profesional de Fernando Elizondo como desarrollador Full Stack. E
 src/
   app/
     shared/components/site-header/  Navegación sticky y menú adaptable
-    features/home/                  Página, contenido y estilos de inicio
+    features/home/                  Página, datos tipados y estilos de inicio
+      home.data.ts                  Contenido estático y tecnologías tipadas
     app.config.ts                   Providers de aplicación y router
     app.routes.ts                   Definición de rutas
     app.ts                          Composición raíz
@@ -29,6 +30,8 @@ src/
 ```
 
 La cabecera concentra el estado del menú móvil y la sección activa. La página de inicio mantiene los grupos de tecnologías como datos tipados y gestiona las animaciones de viewport. No hay componentes separados para piezas de contenido que no requieren estado propio.
+
+El contenido estático de la página se centraliza en `features/home/home.data.ts` (`HOME_CONTENT`, `TECHNOLOGY_GROUPS` y `LEARNING_TECHNOLOGIES`). `HomePage` conserva la presentación y las animaciones; no se añadió un servicio para datos constantes. `SiteHeader` expone `aria-current="location"` únicamente en el enlace correspondiente a la sección activa.
 
 ## Diseño
 
@@ -51,11 +54,13 @@ Versiones verificadas: Angular `22.2.4`, CLI y build `22.2.5`, TypeScript `6.0.3
 - Workspace Angular generado directamente en la raíz del proyecto.
 - Router, SCSS, standalone, modo estricto, Vitest y Tailwind configurados.
 - Cabecera, hero, perfil, tecnologías, nota de proyectos y contacto implementados.
-- Build de producción correcto con `npm run build`.
-- Vitest aprobó una prueba de configuración de rutas con `npm test -- --watch=false`.
+- Antes de esta iteración, el build de producción pasó con `npm run build`.
+- Antes de esta iteración, Vitest aprobó una prueba de configuración de rutas con `npm test -- --watch=false`.
 - `ng serve` inició en `http://127.0.0.1:4200/` y devolvió HTTP 200.
 - Tailwind generó `.sr-only` en el CSS de producción.
 - Motion está integrado en la entrada del hero y las apariciones por viewport, respetando `prefers-reduced-motion`.
+- Esta iteración deja 12 pruebas definidas en total: la prueba previa de rutas más 5 pruebas de HomePage y 6 de SiteHeader. Cubren creación, contenido desde los datos, secciones, navegación, control del menú móvil y `aria-current`. Motion y las APIs del navegador se aíslan con mocks de prueba; las animaciones de producción siguen intactas. La ejecución de estas 12 pruebas está pendiente.
+- Build y pruebas de esta iteración están pendientes de ejecución: npm no inicia porque el entorno indica que no hay una versión activa de Node.js.
 
 ## Próximas funcionalidades
 
