@@ -20,19 +20,28 @@ Crear el sitio profesional de Fernando Elizondo como desarrollador Full Stack. E
 src/
   app/
     shared/components/site-header/  Navegación sticky y menú adaptable
-    features/home/                  Página, datos tipados y estilos de inicio
-      home.data.ts                  Contenido estático y tecnologías tipadas
-    app.config.ts                   Providers de aplicación y router
-    app.routes.ts                   Definición de rutas
-    app.ts                          Composición raíz
-  styles.scss                       Tokens de color, tipografía y resets
-  tailwind.css                      Entrada de Tailwind CSS 4
+    features/
+      home/                          Página, datos tipados y estilos de inicio
+        home.data.ts                 Contenido estático y tecnologías tipadas
+      projects/
+        models/project.model.ts      Modelo tipado con enlaces opcionales
+        data/projects.data.ts        Datos de los tres proyectos destacados
+        components/featured-projects/
+                                      Sección y tarjetas destacadas
+    app.config.ts                    Providers de aplicación y router
+    app.routes.ts                    Definición de rutas
+    app.ts                            Composición raíz
+  styles.scss                        Tokens de color, tipografía y resets
+  tailwind.css                       Entrada de Tailwind CSS 4
 ```
+
+La cabecera concentra el estado del menú móvil y la sección activa. La página de inicio mantiene los grupos de tecnologías como datos tipados y gestiona las animaciones de viewport. No hay componentes separados para piezas de contenido que no requieren estado propio.
 
 La cabecera concentra el estado del menú móvil y la sección activa. La página de inicio mantiene los grupos de tecnologías como datos tipados y gestiona las animaciones de viewport. No hay componentes separados para piezas de contenido que no requieren estado propio.
 
 El contenido estático de la página se centraliza en `features/home/home.data.ts` (`HOME_CONTENT`, `TECHNOLOGY_GROUPS` y `LEARNING_TECHNOLOGIES`). `HomePage` conserva la presentación y las animaciones; no se añadió un servicio para datos constantes. `SiteHeader` expone `aria-current="location"` únicamente en el enlace correspondiente a la sección activa.
 
+La sección de proyectos se integra después de la presentación profesional. `ProfessionalProject` mantiene separados el modelo y los datos, y admite campos opcionales para slug y enlaces de caso de estudio, repositorio o demo. Actualmente no hay URLs configuradas, así que las tarjetas muestran que los casos de estudio están pendientes sin crear enlaces ficticios. SGCM aparece como proyecto principal con cinco detalles de participación; PAPVEH y PAME conservan sus detalles y presentan explícitamente el alcance correspondiente a cada participación. Las tarjetas tienen elevación y escala moderadas al pasar el puntero o al recibir foco; el hover solo aplica a dispositivos con puntero preciso y se respeta `prefers-reduced-motion`.
 ## Diseño
 
 La dirección visual usa minimalismo oscuro, superficies diferenciadas, bordes azul grisáceos, acentos azules y una composición de código abstracta hecha con HTML y SCSS. No utiliza fotografía ni métricas inventadas. El layout prioriza el contraste, jerarquía de lectura, navegación por anclas y cambios de layout para móvil. Motion y las transiciones se reducen con `prefers-reduced-motion`.
@@ -53,18 +62,25 @@ Versiones verificadas: Angular `22.2.4`, CLI y build `22.2.5`, TypeScript `6.0.3
 
 - Workspace Angular generado directamente en la raíz del proyecto.
 - Router, SCSS, standalone, modo estricto, Vitest y Tailwind configurados.
-- Cabecera, hero, perfil, tecnologías, nota de proyectos y contacto implementados.
-- Antes de esta iteración, el build de producción pasó con `npm run build`.
-- Antes de esta iteración, Vitest aprobó una prueba de configuración de rutas con `npm test -- --watch=false`.
-- `ng serve` inició en `http://127.0.0.1:4200/` y devolvió HTTP 200.
-- Tailwind generó `.sr-only` en el CSS de producción.
+- Cabecera, hero, perfil, proyectos destacados, tecnologías y contacto implementados.
+- El contenido estático de HomePage está centralizado en `home.data.ts`.
+- SiteHeader utiliza `aria-current="location"` para identificar la sección activa.
+- Los proyectos destacados están centralizados en `features/projects/data/projects.data.ts`, utilizando el modelo tipado `ProfessionalProject`.
+- SGCM se presenta como proyecto principal; PAPVEH y PAME muestran explícitamente el alcance de participación correspondiente.
+- No se han inventado enlaces a repositorios, demostraciones ni casos de estudio.
+- La implementación inicial pasó el build de producción y una prueba de routing.
+- La iteración de auditoría incorporó cinco pruebas de HomePage y seis de SiteHeader. Junto con la prueba anterior de routing, se validaron 12 pruebas en total.
+- La sección de proyectos incorpora ocho pruebas para comprobar renderizado, tecnologías, detalles de participación, estado de producción y enlaces opcionales.
+- El proyecto cuenta ahora con 21 pruebas definidas en total. La ejecución de la suite completa después de integrar ambas ramas está pendiente.
 - Motion está integrado en la entrada del hero y las apariciones por viewport, respetando `prefers-reduced-motion`.
-- Esta iteración deja 12 pruebas definidas en total: la prueba previa de rutas más 5 pruebas de HomePage y 6 de SiteHeader. Cubren creación, contenido desde los datos, secciones, navegación, control del menú móvil y `aria-current`. Motion y las APIs del navegador se aíslan con mocks de prueba; las animaciones de producción siguen intactas. La ejecución de estas 12 pruebas está pendiente.
-- Build y pruebas de esta iteración están pendientes de ejecución: npm no inicia porque el entorno indica que no hay una versión activa de Node.js.
+- La sección de proyectos reutiliza los mecanismos de revelado existentes y no añade dependencias ni animaciones de producción adicionales.
+- Contacto incluye una tarjeta compacta de currículum con enlaces accesibles para descargar las versiones española e inglesa. Los PDF se publican localmente desde `public/documents/cv-fernando-elizondo-es.pdf` y `public/documents/cv-fernando-elizondo-en.pdf`; Angular copia `public/` a la salida de producción según la configuración de `angular.json`.
+- Los archivos de `public/documents` son copias byte por byte de los originales conservados en `Informacion`. Cada enlace utiliza `download` para guardar el archivo con un nombre descriptivo; no se usa alojamiento externo ni visor embebido.
+- HomePage incorpora una prueba de la tarjeta, etiquetas accesibles, rutas y nombres de descarga de ambos CV.
+- La compilación y las pruebas de la nueva iteración están pendientes de validación local.
 
 ## Próximas funcionalidades
 
 - Añadir casos de estudio cuando se definan proyectos y evidencia verificable.
-- Revisar y publicar el CV descargable si Fernando proporciona el archivo.
 - Definir estrategia de despliegue y dominio.
 - Valorar pruebas de componentes para el menú móvil y la navegación activa.

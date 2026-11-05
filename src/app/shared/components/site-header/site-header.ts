@@ -1,7 +1,13 @@
 import { AfterViewInit, Component, DestroyRef, HostListener, inject, signal } from '@angular/core';
 import { LucideArrowUpRight, LucideMenu, LucideX } from '@lucide/angular';
 
-const SECTIONS = ['inicio', 'sobre-mi', 'tecnologias', 'contacto'] as const;
+const SECTIONS = [
+  'inicio',
+  'sobre-mi',
+  'proyectos',
+  'tecnologias',
+  'contacto'
+] as const;
 
 @Component({
   selector: 'app-site-header',

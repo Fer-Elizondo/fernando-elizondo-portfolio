@@ -1,12 +1,27 @@
 import { AfterViewInit, Component, DestroyRef, ElementRef, inject } from '@angular/core';
 import { animate, inView } from 'motion';
-import { LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideLayers3, LucideMail } from '@lucide/angular';
-import { HOME_CONTENT, LEARNING_TECHNOLOGIES, TECHNOLOGY_GROUPS } from './home.data';
+import {
+  LucideArrowDown,
+  LucideArrowUpRight,
+  LucideCheck,
+  LucideCodeXml,
+  LucideDownload,
+  LucideLayers3,
+  LucideMail,
+} from '@lucide/angular';
+
+import {
+  HOME_CONTENT,
+  LEARNING_TECHNOLOGIES,
+  TECHNOLOGY_GROUPS,
+} from './home.data';
+
+import { FeaturedProjects } from '../projects/components/featured-projects/featured-projects';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideLayers3, LucideMail],
+  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideDownload, LucideLayers3, LucideMail, FeaturedProjects],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

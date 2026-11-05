@@ -1,0 +1,71 @@
+<section class="featured-projects" id="proyectos" aria-labelledby="projects-title" data-reveal>
+  <div class="projects-heading">
+    <p class="projects-eyebrow"><span></span> EXPERIENCIA PROFESIONAL</p>
+    <div class="projects-heading-row">
+      <div>
+        <h2 id="projects-title">Proyectos <span>destacados.</span></h2>
+        <p class="projects-intro">Aplicaciones empresariales que desarrollé durante mi experiencia profesional en INAP.</p>
+      </div>
+      <span class="projects-count" aria-label="Tres proyectos">03 <i>/</i> 03</span>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+    @for (project of projects(); track project.id) {
+      <article class="project-card" [class.project-card-featured]="project.featured" [attr.aria-labelledby]="'project-title-' + project.id">
+        <div class="project-identity">
+          <div class="project-meta">
+            <span class="project-number">{{ project.number }}</span>
+            @if (project.category) { <span class="project-category">{{ project.category }}</span> }
+          </div>
+          <p class="project-acronym">{{ project.acronym }}</p>
+          <h3 [id]="'project-title-' + project.id">{{ project.title }}</h3>
+          <p class="project-summary">{{ project.summary }}</p>
+        </div>
+
+        <div class="project-details">
+          <div class="project-contribution">
+            @if (project.contribution) {
+              <span>Mi participación</span>
+              <strong>{{ project.contribution }}</strong>
+            }
+          </div>
+          <ul class="project-highlights">
+            @for (highlight of project.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+        </div>
+
+        @if (project.technologies; as technologies) {
+          <ul class="project-technologies" [attr.aria-label]="'Tecnologías de ' + project.acronym">
+            @for (technology of technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+        }
+
+        <footer class="project-footer">
+          @if (project.status) {
+            <span class="project-status"><i aria-hidden="true"></i>{{ project.status }}</span>
+          }
+          <div class="project-links">
+            @if (project.caseStudyUrl) {
+              <a class="case-study-link" [href]="project.caseStudyUrl">Caso de estudio <svg lucideArrowUpRight [size]="15" aria-hidden="true"></svg></a>
+            } @else {
+              <span class="case-study-pending">Caso de estudio próximamente</span>
+            }
+            @if (project.repositoryUrl) {
+              <a class="project-external-link" [href]="project.repositoryUrl" target="_blank" rel="noopener noreferrer">Repositorio</a>
+            }
+            @if (project.demoUrl) {
+              <a class="project-external-link" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer">Demo</a>
+            }
+          </div>
+        </footer>
+      </article>
+    }
+  </div>
+
+  <p class="projects-note">{{ participationNote }}</p>
+</section>
