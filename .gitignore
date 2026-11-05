@@ -72,3 +72,7 @@ application_default_credentials.json
 
 # Internal development documents
 /AUDIT_REPORT.md
+
+# Private project information
+/informacion/
+/Informacion/

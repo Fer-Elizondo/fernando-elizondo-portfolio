@@ -2,7 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { vi } from 'vitest';
 import { SiteHeader } from './site-header';
 
-const SECTION_IDS = ['inicio', 'sobre-mi', 'tecnologias', 'contacto'] as const;
+const SECTION_IDS = [
+  'inicio',
+  'sobre-mi',
+  'proyectos',
+  'tecnologias',
+  'contacto'
+] as const;
 
 class MockIntersectionObserver implements IntersectionObserver {
   static latest: MockIntersectionObserver | undefined;

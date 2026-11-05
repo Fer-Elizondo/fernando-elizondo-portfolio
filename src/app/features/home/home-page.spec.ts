@@ -44,7 +44,9 @@ describe('HomePage', () => {
   });
 
   it('renders the main portfolio sections', () => {
-    const sections = fixture.nativeElement.querySelectorAll('main > section[id]') as NodeListOf<HTMLElement>;
+    const sections = fixture.nativeElement.querySelectorAll(
+      'main > section[id], main > app-featured-projects section[id]',
+    ) as NodeListOf<HTMLElement>;
 
     expect(Array.from(sections, (section) => section.id)).toEqual([
       'inicio',
@@ -68,5 +70,28 @@ describe('HomePage', () => {
     const renderedTechnologies = Array.from(fixture.nativeElement.querySelectorAll('.learning-tags span'), (tag: Element) => tag.textContent?.trim());
 
     expect(renderedTechnologies).toEqual([...LEARNING_TECHNOLOGIES]);
+  });
+
+  it('renders accessible Spanish and English CV download links in Contact', () => {
+    const card = fixture.nativeElement.querySelector('.resume-card') as HTMLElement | null;
+    const links = Array.from(card?.querySelectorAll('a') ?? []) as HTMLAnchorElement[];
+
+    expect(card?.querySelector('h3')?.textContent?.trim()).toBe('Mi currículum');
+    expect(links.map((link) => link.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
+      'Descargar CV en español',
+      'Download CV in English',
+    ]);
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '/documents/cv-fernando-elizondo-es.pdf',
+      '/documents/cv-fernando-elizondo-en.pdf',
+    ]);
+    expect(links.map((link) => link.getAttribute('download'))).toEqual([
+      'cv-fernando-elizondo-es.pdf',
+      'cv-fernando-elizondo-en.pdf',
+    ]);
+    expect(links.map((link) => link.getAttribute('aria-label'))).toEqual([
+      'Descargar CV en español',
+      'Download CV in English',
+    ]);
   });
 });
