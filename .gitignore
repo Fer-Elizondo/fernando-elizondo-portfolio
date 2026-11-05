@@ -67,6 +67,8 @@ application_default_credentials.json
 # Local MCP configuration
 .vscode/mcp.json
 
+# Private project information
+/informacion/
 
 # Internal development documents
 /AUDIT_REPORT.md

@@ -1,12 +1,7 @@
 import { AfterViewInit, Component, DestroyRef, ElementRef, inject } from '@angular/core';
 import { animate, inView } from 'motion';
 import { LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideLayers3, LucideMail } from '@lucide/angular';
-
-interface SkillGroup {
-  category: string;
-  note: string;
-  technologies: string[];
-}
+import { HOME_CONTENT, LEARNING_TECHNOLOGIES, TECHNOLOGY_GROUPS } from './home.data';
 
 @Component({
   selector: 'app-home-page',
@@ -19,30 +14,9 @@ export class HomePage implements AfterViewInit {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly skillGroups: SkillGroup[] = [
-    {
-      category: 'Frontend',
-      note: 'Interfaces claras, accesibles y mantenibles.',
-      technologies: ['React', 'TypeScript', 'Material UI'],
-    },
-    {
-      category: 'Backend',
-      note: 'APIs REST, lógica de negocio e integraciones.',
-      technologies: ['Node.js', 'Express', 'Puppeteer'],
-    },
-    {
-      category: 'Bases de datos',
-      note: 'Modelado relacional y consultas eficientes.',
-      technologies: ['MySQL', 'Procedimientos almacenados'],
-    },
-    {
-      category: 'DevOps',
-      note: 'Despliegues, automatización y operación.',
-      technologies: ['Docker', 'Jenkins', 'PM2', 'CI/CD'],
-    },
-  ];
-
-  protected readonly learning = ['Angular', 'ASP.NET Core', 'Google Cloud', 'Terraform', 'PostgreSQL', 'GitHub Actions'];
+  protected readonly content = HOME_CONTENT;
+  protected readonly skillGroups = TECHNOLOGY_GROUPS;
+  protected readonly learning = LEARNING_TECHNOLOGIES;
 
   ngAfterViewInit(): void {
     const host = this.host.nativeElement;
