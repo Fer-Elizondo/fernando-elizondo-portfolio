@@ -18,8 +18,8 @@
 .projects-count i { padding-inline: .3rem; color: #52647e; font-style: normal; }
 
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.project-card { position: relative; display: flex; min-width: 0; flex-direction: column; padding: 1.45rem; overflow: hidden; border: 1px solid rgba(116, 145, 185, .16); border-radius: 15px; background: linear-gradient(150deg, rgba(14, 22, 36, .92), rgba(8, 13, 21, .96)); box-shadow: 0 14px 36px rgba(0, 0, 0, .15); transition: scale 500ms cubic-bezier(.4, 0, .2, 1), translate 500ms cubic-bezier(.4, 0, .2, 1), background-color 450ms cubic-bezier(.4, 0, .2, 1), border-color 450ms cubic-bezier(.4, 0, .2, 1), box-shadow 450ms cubic-bezier(.4, 0, .2, 1); }
-.project-card::before { position: absolute; top: 0; left: 1.45rem; width: 58px; height: 1px; background: linear-gradient(90deg, rgba(83, 157, 255, .72), transparent); content: ''; }
+.project-card { position: relative; display: flex; min-width: 0; flex-direction: column; gap: 1.5rem; padding: 1.45rem; overflow: hidden; border: 1px solid rgba(116, 145, 185, .16); border-radius: 15px; background: linear-gradient(150deg, rgba(14, 22, 36, .92), rgba(8, 13, 21, .96)); box-shadow: 0 14px 36px rgba(0, 0, 0, .15); transition: scale 500ms cubic-bezier(.4, 0, .2, 1), translate 500ms cubic-bezier(.4, 0, .2, 1), background-color 450ms cubic-bezier(.4, 0, .2, 1), border-color 450ms cubic-bezier(.4, 0, .2, 1), box-shadow 450ms cubic-bezier(.4, 0, .2, 1); }
+.project-card::before { position: absolute; top: 0; left: 1rem; width: 58px; height: 1px; background: linear-gradient(90deg, rgba(83, 157, 255, .72), transparent); content: ''; }
 .project-card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(250px, .9fr); column-gap: 2.5rem; row-gap: 1.6rem; padding: 1.9rem; border-color: rgba(91, 143, 208, .26); background: radial-gradient(ellipse at 8% 0%, rgba(44, 100, 176, .12), transparent 43%), linear-gradient(132deg, rgba(15, 25, 42, .98), rgba(8, 13, 21, .97) 70%); }
 .project-card-featured::before { left: 1.9rem; width: 110px; height: 2px; background: linear-gradient(90deg, #59a0ff, rgba(56, 189, 248, .15), transparent); }
 .project-identity, .project-details { min-width: 0; }
@@ -32,6 +32,7 @@
 .project-card-featured h3 { max-width: 610px; font-size: clamp(1.55rem, 2.8vw, 2.05rem); }
 .project-card-featured .project-summary { max-width: 650px; font-size: .86rem; }
 .project-details { display: flex; flex-direction: column; justify-content: center; gap: .95rem; padding: 1.05rem; border: 1px solid rgba(116, 145, 185, .12); border-radius: 11px; background: rgba(5, 10, 18, .36); }
+.project-card:not(.project-card-featured) .project-details { margin-top: 1.5rem; }
 .project-contribution { display: grid; gap: .35rem; }
 .project-contribution span { color: #8192aa; font-size: .64rem; letter-spacing: .04em; text-transform: uppercase; }
 .project-contribution strong { color: #dbe9fb; font-size: .78rem; font-weight: 600; line-height: 1.5; }
@@ -39,7 +40,7 @@
 .project-highlights li { position: relative; padding-left: .85rem; color: #9aaac0; font-size: .71rem; line-height: 1.55; }
 .project-highlights li::before { position: absolute; top: .52em; left: 0; width: 4px; height: 4px; border-radius: 50%; background: #5e9de9; content: ''; }
 .project-technologies { display: flex; grid-column: 1 / -1; flex-wrap: wrap; gap: .45rem; margin: 0; padding: 0; list-style: none; }
-.project-technologies li { padding: .38rem .58rem; border: 1px solid rgba(116, 145, 185, .14); border-radius: 7px; color: #aebed2; background: rgba(16, 24, 39, .64); font-size: .64rem; }
+.project-technologies li { min-width: 0; padding: .4rem .62rem; border: 1px solid var(--technology-tag-border); border-radius: 7px; color: var(--technology-tag-text); background: var(--technology-tag-background); font-size: .72rem; line-height: 1.4; }
 .project-footer { display: flex; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 1rem; min-height: 36px; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(117, 145, 184, .12); }
 .project-status { display: inline-flex; align-items: center; gap: .5rem; color: #a8c2dc; font-size: .66rem; }
 .project-status i { width: 6px; height: 6px; border-radius: 50%; background: #59c798; box-shadow: 0 0 9px rgba(89, 199, 152, .35); }

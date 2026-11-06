@@ -54,7 +54,7 @@ export const HOME_CONTENT = {
     note: 'Los casos de estudio estarán disponibles próximamente.',
   },
   technology: {
-    sectionNumber: '02',
+    sectionNumber: '04',
     sectionLabel: 'HERRAMIENTAS',
     title: {
       lead: 'Un stack pensado',
@@ -65,7 +65,7 @@ export const HOME_CONTENT = {
     learningDescription: 'Amplío mi perfil con nuevas herramientas y prácticas.',
   },
   contact: {
-    sectionNumber: '03',
+    sectionNumber: '05',
     sectionLabel: 'CONTACTO',
     title: {
       lead: '¿Tienes una idea',

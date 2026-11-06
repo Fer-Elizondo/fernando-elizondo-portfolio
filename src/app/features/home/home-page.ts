@@ -17,11 +17,12 @@ import {
 } from './home.data';
 
 import { FeaturedProjects } from '../projects/components/featured-projects/featured-projects';
+import { ProfessionalExperienceSection } from '../experience/components/professional-experience/professional-experience';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideDownload, LucideLayers3, LucideMail, FeaturedProjects],
+  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideDownload, LucideLayers3, LucideMail, FeaturedProjects, ProfessionalExperienceSection],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })
