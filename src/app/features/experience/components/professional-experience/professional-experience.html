@@ -1,0 +1,46 @@
+<section class="experience section-shell section-block" id="experiencia" aria-labelledby="experience-title" data-reveal>
+  <div class="section-label"><span>03</span><i></i> EXPERIENCIA</div>
+  <div class="experience-heading">
+    <div>
+      <h2 id="experience-title">Experiencia <span>profesional.</span></h2>
+      <p>Una trayectoria que combina desarrollo Full Stack, colaboración con usuarios y guía técnica de equipo.</p>
+    </div>
+    <span class="experience-index" aria-hidden="true">01 / 01</span>
+  </div>
+
+  <article class="experience-entry" aria-labelledby="experience-role">
+    <div class="timeline-marker" aria-hidden="true"><span></span></div>
+    <div class="experience-content">
+      <header class="experience-meta">
+        <div>
+          <p class="experience-company">{{ experience.company }}</p>
+          <h3 id="experience-role">{{ experience.role }}</h3>
+        </div>
+        <p class="experience-period"><span aria-hidden="true"></span>{{ experience.period }}</p>
+      </header>
+      <p class="experience-summary">{{ experience.summary }}</p>
+
+      <div class="contribution-grid" aria-label="Áreas de contribución">
+        @for (area of experience.areas; track area.id) {
+          <section class="contribution-area" [attr.aria-labelledby]="'contribution-' + area.id">
+            <h4 [id]="'contribution-' + area.id">{{ area.title }}</h4>
+            <p>{{ area.description }}</p>
+            <ul>
+              @for (detail of area.details; track detail) { <li>{{ detail }}</li> }
+            </ul>
+          </section>
+        }
+      </div>
+
+      <footer class="experience-footer">
+        <div class="experience-projects" aria-label="Sistemas relacionados">
+          <span>Proyectos</span>
+          @for (project of experience.projects; track project) { <b class="project-ref">{{ project }}</b> }
+        </div>
+        <ul class="experience-technologies" aria-label="Tecnologías profesionales">
+          @for (technology of experience.technologies; track technology) { <li>{{ technology }}</li> }
+        </ul>
+      </footer>
+    </div>
+  </article>
+</section>

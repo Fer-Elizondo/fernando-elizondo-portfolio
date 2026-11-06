@@ -45,16 +45,20 @@ describe('HomePage', () => {
 
   it('renders the main portfolio sections', () => {
     const sections = fixture.nativeElement.querySelectorAll(
-      'main > section[id], main > app-featured-projects section[id]',
+      'main > section[id], main > app-featured-projects section[id], main > app-professional-experience section[id]',
     ) as NodeListOf<HTMLElement>;
 
     expect(Array.from(sections, (section) => section.id)).toEqual([
       'inicio',
       'sobre-mi',
       'proyectos',
+      'experiencia',
       'tecnologias',
       'contacto',
     ]);
+
+    const ids = Array.from(fixture.nativeElement.querySelectorAll('[id]'), (element: Element) => element.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('renders the technology groups and their technologies from the data module', () => {

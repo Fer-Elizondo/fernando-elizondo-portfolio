@@ -12,7 +12,7 @@
 
   <div class="projects-grid">
     @for (project of projects(); track project.id) {
-      <article class="project-card" [class.project-card-featured]="project.featured" [attr.aria-labelledby]="'project-title-' + project.id">
+      <article class="project-card" [id]="'project-' + project.id" [class.project-card-featured]="project.featured" [attr.aria-labelledby]="'project-title-' + project.id">
         <div class="project-identity">
           <div class="project-meta">
             <span class="project-number">{{ project.number }}</span>

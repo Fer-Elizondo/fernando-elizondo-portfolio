@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="#inicio" aria-label="Fernando Elizondo, ir al inicio" (click)="closeMenu()">
+    <a class="brand" href="#inicio" aria-label="Fernando Elizondo, ir al inicio" (click)="selectSection('inicio', $event)">
       <span class="brand-mark" aria-hidden="true">FE</span>
       <span class="brand-name">Fernando Elizondo<span class="brand-dot">.</span></span>
     </a>
@@ -13,27 +13,32 @@
 
     <nav id="primary-navigation" class="navigation" [class.is-open]="menuOpen()" aria-label="Navegación principal">
       <a href="#inicio" [class.is-active]="activeSection() === 'inicio'"
-        [attr.aria-current]="activeSection() === 'inicio' ? 'location' : null" (click)="closeMenu()">
+        [attr.aria-current]="activeSection() === 'inicio' ? 'location' : null" (click)="selectSection('inicio', $event)">
         Inicio
       </a>
 
       <a href="#sobre-mi" [class.is-active]="activeSection() === 'sobre-mi'"
-        [attr.aria-current]="activeSection() === 'sobre-mi' ? 'location' : null" (click)="closeMenu()">
+        [attr.aria-current]="activeSection() === 'sobre-mi' ? 'location' : null" (click)="selectSection('sobre-mi', $event)">
         Sobre mí
       </a>
 
       <a href="#proyectos" [class.is-active]="activeSection() === 'proyectos'"
-        [attr.aria-current]="activeSection() === 'proyectos' ? 'location' : null" (click)="closeMenu()">
+        [attr.aria-current]="activeSection() === 'proyectos' ? 'location' : null" (click)="selectSection('proyectos', $event)">
         Proyectos
       </a>
 
+      <a href="#experiencia" [class.is-active]="activeSection() === 'experiencia'"
+        [attr.aria-current]="activeSection() === 'experiencia' ? 'location' : null" (click)="selectSection('experiencia', $event)">
+        Experiencia
+      </a>
+
       <a href="#tecnologias" [class.is-active]="activeSection() === 'tecnologias'"
-        [attr.aria-current]="activeSection() === 'tecnologias' ? 'location' : null" (click)="closeMenu()">
+        [attr.aria-current]="activeSection() === 'tecnologias' ? 'location' : null" (click)="selectSection('tecnologias', $event)">
         Tecnologías
       </a>
 
       <a class="nav-contact" href="#contacto" [class.is-active]="activeSection() === 'contacto'"
-        [attr.aria-current]="activeSection() === 'contacto' ? 'location' : null" (click)="closeMenu()">
+        [attr.aria-current]="activeSection() === 'contacto' ? 'location' : null" (click)="selectSection('contacto', $event)">
         Contacto
         <svg lucideArrowUpRight [size]="15" aria-hidden="true"></svg>
       </a>
