@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { vi } from 'vitest';
 import { SiteHeader } from './site-header';
+import { PORTFOLIO_THEME_STORAGE_KEY } from '../../services/theme.service';
 
 const SECTION_IDS = [
   'inicio',
@@ -9,6 +10,7 @@ const SECTION_IDS = [
   'proyectos',
   'experiencia',
   'tecnologias',
+  'formacion',
   'contacto'
 ] as const;
 
@@ -28,6 +30,8 @@ describe('SiteHeader', () => {
   let originalScrollPaddingTop: string;
 
   beforeEach(async () => {
+    localStorage.removeItem(PORTFOLIO_THEME_STORAGE_KEY);
+    document.documentElement.removeAttribute('data-theme');
     window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
     scrollYDescriptor = Object.getOwnPropertyDescriptor(window, 'scrollY');
     Object.defineProperty(window, 'scrollY', { configurable: true, value: 0 });
@@ -61,6 +65,8 @@ describe('SiteHeader', () => {
 
   afterEach(() => {
     fixture.destroy();
+    localStorage.removeItem(PORTFOLIO_THEME_STORAGE_KEY);
+    document.documentElement.removeAttribute('data-theme');
     testSections.forEach((section) => section.remove());
     document.documentElement.style.scrollPaddingTop = originalScrollPaddingTop;
     if (scrollHeightDescriptor) Object.defineProperty(document.documentElement, 'scrollHeight', scrollHeightDescriptor);
@@ -99,6 +105,25 @@ describe('SiteHeader', () => {
 
     expect(button.getAttribute('aria-label')).toBe('Abrir menú');
     expect(button.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('keeps the theme toggle visible, named, and operable as a native keyboard button', () => {
+    const button = getElement<HTMLButtonElement>(fixture.nativeElement, '.theme-toggle');
+
+    expect(button.tagName).toBe('BUTTON');
+    expect(button.getAttribute('type')).toBe('button');
+    expect(button.getAttribute('aria-label')).toBe('Cambiar a tema claro');
+    expect(button.getAttribute('aria-pressed')).toBe('false');
+    expect(button.querySelector('svg[lucideSun]')).not.toBeNull();
+
+    button.click();
+    fixture.detectChanges();
+
+    expect(button.getAttribute('aria-label')).toBe('Cambiar a tema oscuro');
+    expect(button.getAttribute('aria-pressed')).toBe('true');
+    expect(button.querySelector('svg[lucideMoon]')).not.toBeNull();
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(localStorage.getItem(PORTFOLIO_THEME_STORAGE_KEY)).toBe('light');
   });
 
   it('opens and closes the mobile menu when its button is activated', () => {

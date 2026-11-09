@@ -1,0 +1,239 @@
+<div class="case-study-container" *ngIf="caseStudy">
+  <!-- Encabezado del proyecto -->
+  <section class="hero section-shell">
+    <div class="hero-content" data-reveal>
+      <div class="eyebrow-container">
+        <span class="eyebrow">{{ caseStudy.subtitle }}</span>
+      </div>
+      <h1 class="title">Cloud Backend <span>Lab</span></h1>
+      <p class="description">{{ caseStudy.hero.description }}</p>
+      <p class="overview-copy">{{ caseStudy.overview }}</p>
+
+      <div class="tech-stack">
+        @for (tech of caseStudy.hero.stack; track tech) {
+          <span class="tech-tag">{{ tech }}</span>
+        }
+      </div>
+
+      <div class="hero-actions">
+        <a [href]="caseStudy.hero.repositoryUrl" target="_blank" class="button button-primary">
+          <svg lucideExternalLink [size]="20" aria-hidden="true"></svg>
+          Ver repositorio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitectura -->
+  <section class="architecture section-shell" data-reveal>
+    <div class="section-header">
+      <h2 class="section-title">Arquitectura del <span>sistema</span></h2>
+        <p class="section-subtitle">Evolución de funciones sin servidor hacia una arquitectura basada en contenedores.</p>
+    </div>
+
+    <div class="architecture-grid">
+      <div class="architecture-card" aria-labelledby="current-arch-title">
+        <h3 id="current-arch-title">{{ caseStudy.architecture.currentTitle }}</h3>
+        <p>{{ caseStudy.architecture.currentDescription }}</p>
+        <div class="diagram-container">
+          <svg class="architecture-diagram historic-diagram" viewBox="0 0 960 320" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-labelledby="historic-diagram-title historic-diagram-desc">
+            <title id="historic-diagram-title">Despliegue histórico de hello-function</title>
+            <desc id="historic-diagram-desc">La función hello-function se ejecutaba dentro de Google Cloud Functions. Es un despliegue anterior.</desc>
+            <defs>
+              <marker id="historic-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path class="diagram-arrowhead" d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
+
+            <rect class="cloud-boundary" x="12" y="12" width="936" height="296" rx="20" />
+            <path class="provider-icon" d="M42 61h24a9 9 0 0 0 .2-18 13 13 0 0 0-25-1A10 10 0 0 0 42 61Z" />
+            <text class="provider-title" x="82" y="59">Google Cloud Functions</text>
+            <g class="diagram-badge badge-historical">
+              <rect x="746" y="36" width="176" height="28" rx="14" />
+              <text x="834" y="54" text-anchor="middle">DESPLIEGUE HISTÓRICO</text>
+            </g>
+            <line class="diagram-divider" x1="34" y1="84" x2="926" y2="84" />
+            <path class="diagram-connector" d="M480 88v27" marker-end="url(#historic-arrow)" />
+
+            <g class="architecture-node function-node">
+              <rect class="node-card" x="265" y="126" width="430" height="136" rx="16" />
+              <rect class="node-icon-backplate" x="300" y="166" width="56" height="56" rx="14" />
+              <path class="node-icon" d="m323 179-10 15 10 15m18-30 10 15-10 15m-4-33-10 36" />
+              <text class="node-title" x="372" y="188">hello-function</text>
+              <text class="node-description" x="372" y="215">Función sin servidor</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="architecture-card" aria-labelledby="target-arch-title">
+        <h3 id="target-arch-title">{{ caseStudy.architecture.targetTitle }}</h3>
+        <p>{{ caseStudy.architecture.targetDescription }}</p>
+        <div class="diagram-container">
+          <svg class="architecture-diagram target-diagram" viewBox="0 0 960 320" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-labelledby="target-diagram-title target-diagram-desc">
+            <title id="target-diagram-title">Arquitectura objetivo de cloud-backend-api en Google Cloud</title>
+            <desc id="target-diagram-desc">Cloud Run, en desarrollo, alojará cloud-backend-api. La API se conectará a Cloud SQL, planeado, con PostgreSQL como motor previsto.</desc>
+            <defs>
+              <marker id="target-db-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path class="diagram-arrowhead" d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
+
+            <rect class="cloud-boundary" x="12" y="12" width="936" height="296" rx="20" />
+            <path class="provider-icon" d="M42 61h24a9 9 0 0 0 .2-18 13 13 0 0 0-25-1A10 10 0 0 0 42 61Z" />
+            <text class="provider-title" x="82" y="59">Google Cloud</text>
+            <g class="diagram-badge badge-objective">
+              <rect x="746" y="36" width="176" height="28" rx="14" />
+              <text x="834" y="54" text-anchor="middle">ARQUITECTURA OBJETIVO</text>
+            </g>
+            <line class="diagram-divider" x1="34" y1="84" x2="926" y2="84" />
+
+            <g class="architecture-node cloud-run-node">
+              <rect class="node-card service-card" x="34" y="108" width="380" height="184" rx="16" />
+              <rect class="node-icon-backplate" x="52" y="128" width="38" height="38" rx="11" />
+              <path class="node-icon" d="M61 139h20v15H61zm0 0 10 7 10-7m-20 15 7-6m13 6-7-6" />
+              <text class="node-title" x="102" y="148">Cloud Run</text>
+              <text class="node-description" x="52" y="180">Ejecución de contenedores</text>
+              <g class="status-chip status-development">
+                <rect x="282" y="119" width="118" height="24" rx="12" />
+                <text x="341" y="135" text-anchor="middle">EN DESARROLLO</text>
+              </g>
+
+              <g class="architecture-node api-node">
+                <rect class="node-card application-card" x="52" y="188" width="342" height="83" rx="13" />
+                <rect class="node-icon-backplate" x="66" y="206" width="48" height="48" rx="12" />
+                <path class="node-icon" d="m81 219-7 7 7 7m17-14 7 7-7 7m-4-18-7 22" />
+                <text class="node-title application-title" x="126" y="224">cloud-backend-api</text>
+                <text class="node-description application-description" x="126" y="247">Aplicación alojada en Cloud Run</text>
+              </g>
+            </g>
+
+            <path class="diagram-connector" d="M394 232h288" marker-end="url(#target-db-arrow)" />
+            <g class="connection-label">
+              <rect x="425" y="187" width="244" height="39" rx="8" />
+              <text x="547" y="203" text-anchor="middle">Conexión a</text>
+              <text x="547" y="216" text-anchor="middle">base de datos</text>
+            </g>
+
+            <g class="architecture-node cloud-sql-node">
+              <rect class="node-card database-card" x="690" y="155" width="230" height="142" rx="16" />
+              <path class="node-icon" d="M707 180c0-4 6-7 13-7s13 3 13 7-6 7-13 7-13-3-13-7Zm0 0v18c0 4 6 7 13 7s13-3 13-7v-18m-26 9c0 4 6 7 13 7s13-3 13-7" />
+              <text class="node-title database-title" x="740" y="190">Cloud SQL</text>
+              <text class="node-description database-description" x="706" y="221">Base de datos</text>
+              <text class="node-description database-description" x="706" y="237">relacional administrada</text>
+              <g class="engine-chip">
+                <rect x="704" y="254" width="100" height="24" rx="12" />
+                <text x="754" y="270" text-anchor="middle">PostgreSQL</text>
+              </g>
+              <g class="status-chip status-planned">
+                <rect x="812" y="254" width="96" height="24" rx="12" />
+                <text x="860" y="270" text-anchor="middle">PLANEADO</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementación técnica -->
+  <section class="technical-details section-shell" data-reveal>
+    <div class="section-header">
+      <h2 class="section-title">Implementación <span>técnica</span></h2>
+    </div>
+
+    <div class="carousel" role="region" aria-label="Categorías de implementación técnica"
+      aria-roledescription="carrusel" (mouseenter)="setPointerInside(true)" (mouseleave)="setPointerInside(false)"
+      (focusin)="onFocusIn()" (focusout)="onFocusOut($event)" (keydown)="onKeydown($event)"
+      (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          @for (category of technicalCategories; track category.key; let index = $index) {
+            <article class="details-card" [class.is-active]="activeSlide() === index" role="group" aria-roledescription="diapositiva"
+              [attr.aria-label]="(index + 1) + ' de ' + technicalCategories.length + ': ' + category.title"
+              [attr.aria-hidden]="activeSlide() !== index" [attr.inert]="activeSlide() !== index ? '' : null"
+              [style.transform]="getSlideTransform(index)">
+              <div class="card-header">
+                @switch (category.key) {
+                  @case ('backend') { <svg lucideServer [size]="24" aria-hidden="true"></svg> }
+                  @case ('databaseAndTesting') { <svg lucideDatabase [size]="24" aria-hidden="true"></svg> }
+                  @case ('cicd') { <svg lucideShieldCheck [size]="24" aria-hidden="true"></svg> }
+                  @case ('infrastructure') { <svg lucideCodeXml [size]="24" aria-hidden="true"></svg> }
+                }
+                <h3>{{ category.title }}</h3>
+              </div>
+              <ul>
+                @for (item of category.items; track item.name) {
+                  <li [ngClass]="getStatusClass(item.status)">
+                    <span class="item-copy"><span class="item-name">{{ item.name }}</span><span class="item-desc">{{ item.description }}</span></span>
+                    <span class="evidence-status" [ngClass]="getStatusClass(item.status)">{{ getStatusLabel(item.status) }}</span>
+                    @if (item.status === 'implemented' || (category.key === 'cicd' && item.status === 'verified-in-ci')) {
+                      <svg lucideCheck [size]="14" aria-hidden="true"></svg>
+                    }
+                  </li>
+                }
+              </ul>
+            </article>
+          }
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <div class="carousel-navigation" role="group" aria-label="Navegación de diapositivas">
+          <button type="button" class="carousel-arrow" aria-label="Categoría anterior" (click)="showPrevious()">
+            <span aria-hidden="true">←</span>
+          </button>
+          <div class="carousel-indicators" role="group" aria-label="Seleccionar categoría">
+            @for (category of technicalCategories; track category.key; let index = $index) {
+              <button type="button" class="carousel-indicator" [class.is-active]="activeSlide() === index"
+                [attr.aria-label]="'Mostrar ' + category.title" [attr.aria-current]="activeSlide() === index ? 'true' : null"
+                (click)="showSlide(index)"></button>
+            }
+          </div>
+          <button type="button" class="carousel-arrow" aria-label="Categoría siguiente" (click)="showNext()">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hoja de ruta -->
+  <section class="roadmap section-shell" data-reveal>
+    <div class="section-header">
+      <h2 class="section-title">Hoja de <span>ruta</span></h2>
+    </div>
+    <div class="roadmap-container">
+      @for (step of caseStudy.roadmap; track step.name; let index = $index) {
+        <article class="roadmap-step" [ngClass]="getStatusClass(step.status)">
+          <span class="step-number" aria-hidden="true">{{ index + 1 }}</span>
+          <div class="step-content">
+            <h4>{{ step.name }}</h4>
+            <p>{{ step.description }}</p>
+            <span class="status-label">{{ getStatusLabel(step.status) }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- Llamado a la acción -->
+  <section class="footer-action section-shell">
+    <div class="action-card">
+      <h3>¿Te interesa el código?</h3>
+      <p>Consulta la implementación completa en GitHub.</p>
+      <a [href]="caseStudy.hero.repositoryUrl" target="_blank" class="button button-primary">
+        Explorar repositorio <svg lucideArrowUpRight [size]="20" aria-hidden="true"></svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="back-to-portfolio">
+    <a routerLink="/" class="back-link">
+      <svg lucideArrowUpRight [size]="16" aria-hidden="true"></svg>
+      Volver al portafolio
+    </a>
+  </div>
+</div>

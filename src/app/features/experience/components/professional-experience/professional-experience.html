@@ -1,5 +1,5 @@
 <section class="experience section-shell section-block" id="experiencia" aria-labelledby="experience-title" data-reveal>
-  <div class="section-label"><span>03</span><i></i> EXPERIENCIA</div>
+  <div class="section-label"><span>02</span><i></i> EXPERIENCIA</div>
   <div class="experience-heading">
     <div>
       <h2 id="experience-title">Experiencia <span>profesional.</span></h2>
@@ -22,7 +22,7 @@
 
       <div class="contribution-grid" aria-label="Áreas de contribución">
         @for (area of experience.areas; track area.id) {
-          <section class="contribution-area" [attr.aria-labelledby]="'contribution-' + area.id">
+          <section class="contribution-area" [attr.aria-labelledby]="'contribution-' + area.id" tabindex="0">
             <h4 [id]="'contribution-' + area.id">{{ area.title }}</h4>
             <p>{{ area.description }}</p>
             <ul>

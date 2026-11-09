@@ -49,14 +49,17 @@
           <div class="code-cursor"><span class="line-number">07</span><span class="cursor-block"></span></div>
         </div>
         <div class="window-bottom"><span><i class="status-dot"></i> Build listo</span><span>TypeScript</span></div>
+        <div class="build-flow" aria-hidden="true"><span>Diseño</span><i>→</i><span>Desarrollo</span><i>→</i><span>Integración</span><i>→</i><span>Entrega</span></div>
       </div>
-      <div class="stack-node node-ui"><span class="node-icon"><svg lucideLayers3 [size]="17"
-            aria-hidden="true"></svg></span><span><b>Interfaz</b><small>Experiencia de usuario</small></span><i
+      <div class="stack-node node-ui" aria-hidden="true"><span class="node-icon"><svg lucideLayers3 [size]="17"
+            aria-hidden="true"></svg></span><span><b>Frontend</b><small>React · TypeScript</small></span><i
           class="node-check"><svg lucideCheck [size]="12" aria-hidden="true"></svg></i></div>
-      <div class="stack-node node-api"><span class="node-icon"><svg lucideCodeXml [size]="17"
-            aria-hidden="true"></svg></span><span><b>API REST</b><small>Reglas de negocio</small></span><i
+      <div class="stack-node node-api" aria-hidden="true"><span class="node-icon"><svg lucideCodeXml [size]="17"
+            aria-hidden="true"></svg></span><span><b>Backend</b><small>Node.js · Express</small></span><i
           class="node-check"><svg lucideCheck [size]="12" aria-hidden="true"></svg></i></div>
-      <div class="visual-caption"><span>01 / 03</span><span class="caption-line"></span><span>De la idea al
+      <div class="stack-node node-data" aria-hidden="true"><span class="node-icon node-icon-data">DB</span><span><b>Datos</b><small>MySQL · PostgreSQL</small></span></div>
+      <div class="stack-node node-delivery" aria-hidden="true"><span class="node-icon node-icon-delivery">CI</span><span><b>Automatización</b><small>CI/CD · entrega</small></span></div>
+      <div class="visual-caption" aria-hidden="true"><span>01 / 03</span><span class="caption-line"></span><span>De la idea al
           despliegue</span></div>
     </div>
 
@@ -77,8 +80,11 @@
     </div>
     <div class="about-facts" [attr.aria-label]="content.about.factsLabel">
       @for (fact of content.about.facts; track fact.index) {
-      <div><span class="fact-icon">{{ fact.index }}</span><span><b>{{ fact.title }}</b><small>{{ fact.description
-            }}</small></span></div>
+      <article tabindex="0" [attr.aria-labelledby]="'about-fact-' + fact.index">
+        <span class="fact-icon">{{ fact.index }}</span>
+        <span class="fact-copy"><b [id]="'about-fact-' + fact.index">{{ fact.title }}</b><small>{{ fact.description
+            }}</small></span>
+      </article>
       }
     </div>
   </section>
@@ -92,6 +98,8 @@
   </section>
 
   <app-professional-experience></app-professional-experience>
+
+  <app-personal-projects></app-personal-projects>
 
   <section class="technology section-shell section-block" id="tecnologias" aria-labelledby="technology-title"
     data-reveal>
@@ -129,6 +137,8 @@
       <div class="learning-tags">@for (technology of learning; track technology) { <span>{{ technology }}</span> }</div>
     </div>
   </section>
+
+  <app-education-section></app-education-section>
 
   <section class="contact section-shell section-block" id="contacto" aria-labelledby="contact-title" data-reveal>
     <div class="contact-panel">

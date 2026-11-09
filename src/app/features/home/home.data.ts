@@ -26,7 +26,7 @@ export const HOME_CONTENT = {
     technologiesLabel: 'Tecnologías principales',
     stackLabel: 'Enfoque principal',
     technologies: ['React', 'TypeScript', 'Node.js', 'MySQL'],
-    visualDescription: 'Una aplicación conecta tres capas: interfaz de usuario, API REST y base de datos.',
+    visualDescription: 'Entorno de trabajo Full Stack con frontend React y TypeScript, backend Node.js y Express, datos MySQL y PostgreSQL, y una secuencia de diseño, desarrollo, integración y entrega continua.',
     scrollLabel: 'DESLIZA PARA EXPLORAR',
     scrollDescription: 'Continuar a la sección sobre mí',
   },
@@ -38,8 +38,8 @@ export const HOME_CONTENT = {
       emphasis: 'reales.',
     } satisfies SectionHeading,
     paragraphs: [
-      'Durante más de tres años he participado en el desarrollo y despliegue de aplicaciones web de extremo a extremo. Mi trabajo combina frontend, backend y datos para convertir necesidades de producto en soluciones que funcionan en producción.',
-      'También he coordinado a un equipo de tres desarrolladores, cuidando la colaboración y la calidad técnica durante la entrega.',
+      'Durante más de tres años he participado en el desarrollo de aplicaciones empresariales de extremo a extremo. He trabajado con interfaces en React y TypeScript, servicios con Node.js y Express, PHP y Laravel, y bases de datos como MySQL y MariaDB. También he implementado reglas de negocio, módulos de gestión, generación de PDF y procesos automatizados de entrega.',
+      'Además, he coordinado técnicamente a un equipo de tres desarrolladores, dando seguimiento al trabajo y cuidando la calidad de las entregas. Me interesa entender las necesidades del negocio y construir soluciones mantenibles desde la interfaz hasta su operación.',
     ],
     linkLabel: 'Conoce mi experiencia',
     factsLabel: 'Áreas de experiencia',
@@ -50,12 +50,12 @@ export const HOME_CONTENT = {
     ],
   },
   projects: {
-    index: '02 / PORTAFOLIO',
+    index: '03 / PROYECTOS',
     note: 'Los casos de estudio estarán disponibles próximamente.',
   },
   technology: {
     sectionNumber: '04',
-    sectionLabel: 'HERRAMIENTAS',
+    sectionLabel: 'TECNOLOGÍAS',
     title: {
       lead: 'Un stack pensado',
       emphasis: 'para entregar.',
@@ -65,7 +65,7 @@ export const HOME_CONTENT = {
     learningDescription: 'Amplío mi perfil con nuevas herramientas y prácticas.',
   },
   contact: {
-    sectionNumber: '05',
+    sectionNumber: '06',
     sectionLabel: 'CONTACTO',
     title: {
       lead: '¿Tienes una idea',

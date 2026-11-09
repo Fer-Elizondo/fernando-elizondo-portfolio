@@ -2,7 +2,8 @@ import { AfterViewInit, Component, DestroyRef, HostListener, inject, signal } fr
 import { NavigationEnd, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
-import { LucideArrowUpRight, LucideMenu, LucideX } from '@lucide/angular';
+import { LucideArrowUpRight, LucideMenu, LucideMoon, LucideSun, LucideX } from '@lucide/angular';
+import { ThemeService } from '../../services/theme.service';
 
 const SECTIONS = [
   'inicio',
@@ -10,19 +11,21 @@ const SECTIONS = [
   'proyectos',
   'experiencia',
   'tecnologias',
+  'formacion',
   'contacto'
 ] as const;
 
 @Component({
   selector: 'app-site-header',
   standalone: true,
-  imports: [LucideArrowUpRight, LucideMenu, LucideX],
+  imports: [LucideArrowUpRight, LucideMenu, LucideMoon, LucideSun, LucideX],
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
 })
 export class SiteHeader implements AfterViewInit {
   protected readonly menuOpen = signal(false);
   protected readonly activeSection = signal<string>('inicio');
+  protected readonly themeService = inject(ThemeService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
   private frameId: number | undefined;
@@ -127,6 +130,10 @@ export class SiteHeader implements AfterViewInit {
 
   protected toggleMenu(): void {
     this.menuOpen.update((open) => !open);
+  }
+
+  protected toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   @HostListener('document:keydown.escape')
