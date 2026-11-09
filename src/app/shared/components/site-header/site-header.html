@@ -5,43 +5,60 @@
       <span class="brand-name">Fernando Elizondo<span class="brand-dot">.</span></span>
     </a>
 
-    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="primary-navigation"
-      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'" (click)="toggleMenu()">
-      @if (menuOpen()) { <svg lucideX [size]="20" aria-hidden="true"></svg> }
-      @else { <svg lucideMenu [size]="20" aria-hidden="true"></svg> }
-    </button>
+    <div class="header-right">
+      <nav id="primary-navigation" class="navigation" [class.is-open]="menuOpen()" aria-label="Navegación principal">
+        <a href="#inicio" [class.is-active]="activeSection() === 'inicio'"
+          [attr.aria-current]="activeSection() === 'inicio' ? 'location' : null" (click)="selectSection('inicio', $event)">
+          Inicio
+        </a>
 
-    <nav id="primary-navigation" class="navigation" [class.is-open]="menuOpen()" aria-label="Navegación principal">
-      <a href="#inicio" [class.is-active]="activeSection() === 'inicio'"
-        [attr.aria-current]="activeSection() === 'inicio' ? 'location' : null" (click)="selectSection('inicio', $event)">
-        Inicio
-      </a>
+        <a href="#sobre-mi" [class.is-active]="activeSection() === 'sobre-mi'"
+          [attr.aria-current]="activeSection() === 'sobre-mi' ? 'location' : null" (click)="selectSection('sobre-mi', $event)">
+          Sobre mí
+        </a>
 
-      <a href="#sobre-mi" [class.is-active]="activeSection() === 'sobre-mi'"
-        [attr.aria-current]="activeSection() === 'sobre-mi' ? 'location' : null" (click)="selectSection('sobre-mi', $event)">
-        Sobre mí
-      </a>
+        <a href="#proyectos" [class.is-active]="activeSection() === 'proyectos'"
+          [attr.aria-current]="activeSection() === 'proyectos' ? 'location' : null" (click)="selectSection('proyectos', $event)">
+          Proyectos
+        </a>
 
-      <a href="#proyectos" [class.is-active]="activeSection() === 'proyectos'"
-        [attr.aria-current]="activeSection() === 'proyectos' ? 'location' : null" (click)="selectSection('proyectos', $event)">
-        Proyectos
-      </a>
+        <a href="#experiencia" [class.is-active]="activeSection() === 'experiencia'"
+          [attr.aria-current]="activeSection() === 'experiencia' ? 'location' : null" (click)="selectSection('experiencia', $event)">
+          Experiencia
+        </a>
 
-      <a href="#experiencia" [class.is-active]="activeSection() === 'experiencia'"
-        [attr.aria-current]="activeSection() === 'experiencia' ? 'location' : null" (click)="selectSection('experiencia', $event)">
-        Experiencia
-      </a>
+        <a href="#tecnologias" [class.is-active]="activeSection() === 'tecnologias'"
+          [attr.aria-current]="activeSection() === 'tecnologias' ? 'location' : null" (click)="selectSection('tecnologias', $event)">
+          Tecnologías
+        </a>
 
-      <a href="#tecnologias" [class.is-active]="activeSection() === 'tecnologias'"
-        [attr.aria-current]="activeSection() === 'tecnologias' ? 'location' : null" (click)="selectSection('tecnologias', $event)">
-        Tecnologías
-      </a>
+        <a href="#formacion" [class.is-active]="activeSection() === 'formacion'"
+          [attr.aria-current]="activeSection() === 'formacion' ? 'location' : null" (click)="selectSection('formacion', $event)">
+          Formación
+        </a>
 
-      <a class="nav-contact" href="#contacto" [class.is-active]="activeSection() === 'contacto'"
-        [attr.aria-current]="activeSection() === 'contacto' ? 'location' : null" (click)="selectSection('contacto', $event)">
-        Contacto
-        <svg lucideArrowUpRight [size]="15" aria-hidden="true"></svg>
-      </a>
-    </nav>
+        <a class="nav-contact" href="#contacto" [class.is-active]="activeSection() === 'contacto'"
+          [attr.aria-current]="activeSection() === 'contacto' ? 'location' : null" (click)="selectSection('contacto', $event)">
+          Contacto
+          <svg lucideArrowUpRight [size]="15" aria-hidden="true"></svg>
+        </a>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" (click)="toggleTheme()"
+          [attr.aria-label]="themeService.theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+          [attr.title]="themeService.theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+          [attr.aria-pressed]="themeService.theme() === 'light'">
+          @if (themeService.theme() === 'dark') { <svg lucideSun [size]="17" aria-hidden="true"></svg> }
+          @else { <svg lucideMoon [size]="17" aria-hidden="true"></svg> }
+        </button>
+
+        <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="primary-navigation"
+          [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'" (click)="toggleMenu()">
+          @if (menuOpen()) { <svg lucideX [size]="20" aria-hidden="true"></svg> }
+          @else { <svg lucideMenu [size]="20" aria-hidden="true"></svg> }
+        </button>
+      </div>
+    </div>
   </div>
 </header>

@@ -17,12 +17,14 @@ import {
 } from './home.data';
 
 import { FeaturedProjects } from '../projects/components/featured-projects/featured-projects';
+import { PersonalProjects } from '../projects/components/personal-projects/personal-projects';
 import { ProfessionalExperienceSection } from '../experience/components/professional-experience/professional-experience';
+import { EducationSection } from '../education/components/education-section/education-section';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideDownload, LucideLayers3, LucideMail, FeaturedProjects, ProfessionalExperienceSection],
+  imports: [LucideArrowDown, LucideArrowUpRight, LucideCheck, LucideCodeXml, LucideDownload, LucideLayers3, LucideMail, FeaturedProjects, PersonalProjects, ProfessionalExperienceSection, EducationSection],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

@@ -61,6 +61,8 @@ describe('FeaturedProjects', () => {
     cards.forEach((card, index) => {
       expect(card.querySelector('.project-category')?.textContent?.trim()).toBe(FEATURED_PROJECTS[index].category);
       expect(card.querySelector('.project-contribution strong')?.textContent?.trim()).toBe(FEATURED_PROJECTS[index].contribution);
+      expect(card.querySelector('.project-details')?.getAttribute('tabindex')).toBe('0');
+      expect(card.querySelector('.project-details')?.getAttribute('aria-label')).toBe('Mi participación');
     });
   });
 

@@ -1,26 +1,72 @@
-$background-primary: #05070b;
-$background-secondary: #0a0f18;
-$surface: #101827;
-$border: #23334d;
-$primary: #3b82f6;
-$accent: #38bdf8;
-$text-primary: #f4f7fb;
-$text-secondary: #a6b4c8;
-
 :root {
   color-scheme: dark;
-  --background-primary: #{$background-primary};
-  --background-secondary: #{$background-secondary};
-  --surface: #{$surface};
-  --border: #{$border};
-  --primary: #{$primary};
-  --accent: #{$accent};
-  --text-primary: #{$text-primary};
-  --text-secondary: #{$text-secondary};
+  --background-primary: #05070b;
+  --background-secondary: #0a0f18;
+  --surface: #101827;
+  --surface-card: #0e1624;
+  --surface-card-gradient: linear-gradient(150deg, rgba(14, 22, 36, .92), rgba(8, 13, 21, .96));
+  --surface-card-hover: #14243a;
+  --surface-inset: #080d15;
+  --surface-panel: linear-gradient(145deg, rgba(16, 24, 39, .72), rgba(8, 13, 21, .76));
+  --surface-featured: radial-gradient(ellipse at 8% 0%, rgba(44, 100, 176, .12), transparent 43%), linear-gradient(132deg, rgba(15, 25, 42, .98), rgba(8, 13, 21, .97) 70%);
+  --surface-contact: linear-gradient(120deg, rgba(15, 26, 44, .92), rgba(10, 15, 24, .95) 62%);
+  --surface-header: rgba(5, 7, 11, .82);
+  --surface-menu: rgba(10, 15, 24, .98);
+  --border-header: rgba(117, 145, 184, .13);
+  --border: #23334d;
+  --border-subtle: rgba(117, 145, 184, .13);
+  --border-card: rgba(116, 145, 185, .16);
+  --border-hover: rgba(119, 168, 236, .4);
+  --primary: #3b82f6;
+  --accent: #38bdf8;
+  --accent-text: #87b9ff;
+  --accent-soft: rgba(51, 108, 186, .13);
+  --accent-border: rgba(75, 142, 245, .2);
+  --accent-line: #416999;
+  --focus-ring: #83b6ff;
+  --text-primary: #f4f7fb;
+  --text-secondary: #a6b4c8;
   --text-muted: #8492a7;
+  --text-strong: #e5edf9;
+  --text-soft: #c3cfdf;
+  --text-card: #e3ebf8;
+  --text-link: #a6caff;
+  --text-link-hover: #ffffff;
+  --text-nav: #8492a7;
+  --text-nav-hover: #ffffff;
+  --text-nav-active: #f4f7fb;
+  --text-nav-contact: #d5e7ff;
+  --text-on-accent: #061629;
   --technology-tag-background: #14253b;
   --technology-tag-border: #2c4b70;
   --technology-tag-text: #c8dcf7;
+  --technology-tag-hover-background: #14253b;
+  --technology-tag-hover-border: #2c4b70;
+  --ambient-glow: rgba(28, 54, 94, .2);
+  --shadow-card: 0 14px 36px rgba(0, 0, 0, .15);
+  --shadow-card-hover: 0 20px 44px rgba(0, 0, 0, .25);
+  --shadow-popover: 0 18px 50px rgba(0, 0, 0, .35);
+  --diagram-surface: #070c14;
+  --diagram-label: #ffffff;
+  --diagram-node-fill: rgba(135, 185, 255, .16);
+  --status-implemented: #10b981;
+  --status-implemented-text: #6ee7b7;
+  --status-implemented-background: rgba(16, 185, 129, .1);
+  --status-implemented-border: rgba(16, 185, 129, .35);
+  --status-verified: #3b82f6;
+  --status-verified-text: #93c5fd;
+  --status-verified-background: rgba(59, 130, 246, .1);
+  --status-verified-border: rgba(59, 130, 246, .35);
+  --status-deployed: #f59e0b;
+  --status-deployed-text: #fcd34d;
+  --status-deployed-background: rgba(245, 158, 11, .1);
+  --status-deployed-border: rgba(245, 158, 11, .35);
+  --status-development-text: #a9ceff;
+  --status-development-background: rgba(45, 105, 180, .15);
+  --status-development-border: rgba(104, 158, 233, .38);
+  --status-planned-text: #d0baff;
+  --status-planned-background: rgba(123, 83, 191, .14);
+  --status-planned-border: rgba(164, 130, 228, .38);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,20 +74,213 @@ $text-secondary: #a6b4c8;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
-  background: $background-primary;
-  color: $text-primary;
+  background: var(--background-primary);
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background-primary: #eef2f7;
+  --background-secondary: #e4ebf3;
+  --surface: #ffffff;
+  --surface-card: #ffffff;
+  --surface-card-gradient: linear-gradient(150deg, #ffffff, #f6f9fd);
+  --surface-card-hover: #f5f9ff;
+  --surface-inset: #f1f5fa;
+  --surface-panel: linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(244, 248, 253, .98));
+  --surface-featured: radial-gradient(ellipse at 8% 0%, rgba(44, 100, 176, .07), transparent 43%), linear-gradient(132deg, #ffffff, #f4f8fd 70%);
+  --surface-contact: linear-gradient(120deg, #ffffff, #edf3fa 75%);
+  --surface-header: rgba(244, 247, 251, .94);
+  --surface-menu: rgba(248, 250, 253, .99);
+  --border-header: #cbd6e3;
+  --border: #cdd8e5;
+  --border-subtle: rgba(47, 69, 96, .18);
+  --border-card: #d3dce8;
+  --border-hover: rgba(40, 102, 173, .46);
+  --accent-text: #245b9b;
+  --accent-soft: rgba(40, 102, 173, .12);
+  --accent-border: rgba(40, 102, 173, .32);
+  --accent-line: #7296c2;
+  --focus-ring: #205a9d;
+  --text-primary: #172235;
+  --text-secondary: #536174;
+  --text-muted: #5f6e82;
+  --text-strong: #24344a;
+  --text-soft: #40516a;
+  --text-card: #1d2b3e;
+  --text-link: #2866ad;
+  --text-link-hover: #174a83;
+  --text-nav: #40516a;
+  --text-nav-hover: #174a83;
+  --text-nav-active: #245b9b;
+  --text-nav-contact: #245b9b;
+  --text-on-accent: #061629;
+  --technology-tag-background: #e5effb;
+  --technology-tag-border: #b9cde4;
+  --technology-tag-text: #244e7a;
+  --technology-tag-hover-background: #d8e8fa;
+  --technology-tag-hover-border: #91b5dc;
+  --ambient-glow: rgba(59, 130, 246, .08);
+  --shadow-card: 0 12px 30px rgba(35, 58, 88, .07);
+  --shadow-card-hover: 0 18px 36px rgba(35, 58, 88, .12);
+  --shadow-popover: 0 18px 48px rgba(35, 58, 88, .16);
+  --diagram-surface: #e5edf6;
+  --diagram-label: #24344a;
+  --diagram-node-fill: rgba(40, 102, 173, .12);
+  --status-implemented: #047857;
+  --status-implemented-text: #047857;
+  --status-implemented-background: #ecfdf5;
+  --status-implemented-border: #a7f3d0;
+  --status-verified: #1d4ed8;
+  --status-verified-text: #1d4ed8;
+  --status-verified-background: #eff6ff;
+  --status-verified-border: #bfdbfe;
+  --status-deployed: #b45309;
+  --status-deployed-text: #a64b08;
+  --status-deployed-background: #fffbeb;
+  --status-deployed-border: #fcd34d;
+  --status-development-text: #1d4ed8;
+  --status-development-background: #eff6ff;
+  --status-development-border: #bfdbfe;
+  --status-planned-text: #6d28d9;
+  --status-planned-background: #f5f3ff;
+  --status-planned-border: #ddd6fe;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { min-width: 320px; background: $background-primary; }
-body { min-width: 320px; min-height: 100vh; margin: 0; background: radial-gradient(ellipse at 50% -18rem, rgba(28, 54, 94, .2), transparent 42rem), $background-primary; }
+*, *::before, *::after { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+html { min-width: 320px; background: var(--background-primary); }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: radial-gradient(ellipse at 50% -18rem, var(--ambient-glow), transparent 42rem), var(--background-primary); }
 button, a { -webkit-tap-highlight-color: transparent; }
 ::selection { color: #fff; background: rgba(59, 130, 246, .58); }
 
-@media (prefers-reduced-motion: reduce) {
-  :root { scroll-behavior: auto; }
+:root[data-theme='light'] .tech-tag:hover,
+:root[data-theme='light'] .skill-tags span:hover,
+:root[data-theme='light'] .learning-tags span:hover,
+:root[data-theme='light'] .project-technologies li:hover,
+:root[data-theme='light'] .experience-technologies li:hover {
+  background-color: var(--technology-tag-hover-background);
+  border-color: var(--technology-tag-hover-border);
 }
 
-@media (max-width: 680px) {
+:root[data-theme='light'] .details-card .card-header > svg {
+  border: 1px solid var(--accent-border);
+  border-radius: 7px;
+  color: var(--accent-text);
+  background: var(--accent-soft);
+}
+
+:root[data-theme='light'] .education-card:hover .education-icon,
+:root[data-theme='light'] .contact-links > a:hover .contact-link-icon,
+:root[data-theme='light'] .contact-links > a:focus-visible .contact-link-icon {
+  border-color: var(--border-hover);
+  color: var(--text-link-hover);
+  background: var(--surface-card-hover);
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  :root[data-theme='light'] .details-card.is-active:hover .card-header > svg {
+    border-color: var(--border-hover);
+    color: var(--text-link-hover);
+    background: var(--surface-card-hover);
+  }
+}
+
+:root[data-theme='light'] .navigation a:hover { background: var(--accent-soft); }
+
+.architecture-diagram { font-family: inherit; }
+.architecture-diagram .cloud-boundary { fill: var(--surface-card); stroke: var(--border-card); stroke-width: 1.5; }
+.architecture-diagram .diagram-divider { stroke: var(--border-subtle); stroke-width: 1; }
+.architecture-diagram .provider-icon, .architecture-diagram .node-icon { fill: none; stroke: var(--accent-text); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.architecture-diagram .provider-title { fill: var(--text-primary); font-size: 19px; font-weight: 650; letter-spacing: -.2px; }
+.architecture-diagram .node-card { fill: var(--surface); stroke: var(--border-card); stroke-width: 1.5; }
+.architecture-diagram .service-card { fill: var(--diagram-node-fill); stroke: var(--accent-border); }
+.architecture-diagram .application-card { fill: var(--surface-card); }
+.architecture-diagram .node-icon-backplate { fill: var(--accent-soft); stroke: var(--accent-border); stroke-width: 1; }
+.architecture-diagram .node-title { fill: var(--text-primary); font-size: 17px; font-weight: 600; letter-spacing: -.2px; }
+.architecture-diagram .application-title { font-size: 15px; }
+.architecture-diagram .node-description { fill: var(--text-secondary); font-size: 12px; font-weight: 400; }
+.architecture-diagram .diagram-badge rect { fill: var(--accent-soft); stroke: var(--accent-border); stroke-width: 1; }
+.architecture-diagram .diagram-badge text { fill: var(--accent-text); font-size: 10px; font-weight: 650; letter-spacing: 1px; }
+.architecture-diagram .diagram-connector { fill: none; stroke: var(--accent-text); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.architecture-diagram .diagram-arrowhead { fill: var(--accent-text); }
+.architecture-diagram .connection-label rect { fill: var(--diagram-surface); stroke: var(--border-card); stroke-width: 1; }
+.architecture-diagram .connection-label text { fill: var(--text-secondary); font-size: 10px; font-weight: 500; }
+.architecture-diagram .status-chip rect { stroke-width: 1; }
+.architecture-diagram .status-chip text { font-size: 9px; font-weight: 700; letter-spacing: .6px; }
+.architecture-diagram .status-development rect { fill: var(--status-development-background); stroke: var(--status-development-border); }
+.architecture-diagram .status-development text { fill: var(--status-development-text); }
+.architecture-diagram .status-planned rect { fill: var(--status-planned-background); stroke: var(--status-planned-border); }
+.architecture-diagram .status-planned text { fill: var(--status-planned-text); }
+.architecture-diagram .engine-chip rect { fill: var(--diagram-node-fill); stroke: var(--accent-border); stroke-width: 1; }
+.architecture-diagram .engine-chip text { fill: var(--accent-text); font-size: 10px; font-weight: 600; }
+.architecture-diagram .architecture-node { transform-box: fill-box; transform-origin: center; filter: none; transition: transform 180ms ease, filter 180ms ease; }
+.architecture-diagram .architecture-node > .node-card { transition: fill 180ms ease, stroke 180ms ease; }
+.case-study-container .diagram-container { transition: transform 180ms ease, box-shadow 180ms ease; }
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .case-study-container .diagram-container:hover { transform: translateY(-2px); outline: 1px solid var(--border-hover); outline-offset: -1px; box-shadow: var(--shadow-card-hover); }
+  .architecture-diagram .architecture-node:hover:not(.cloud-run-node) { transform: scale(1.03); filter: drop-shadow(0 3px 5px var(--accent-soft)); }
+  .architecture-diagram .architecture-node:hover:not(.cloud-run-node) > .node-card,
+  .architecture-diagram .cloud-run-node:hover:not(:has(.api-node:hover)) > .service-card { fill: var(--surface-card-hover); stroke: var(--border-hover); }
+  .architecture-diagram .cloud-run-node:hover:not(:has(.api-node:hover)) { transform: scale(1.03); filter: drop-shadow(0 3px 5px var(--accent-soft)); }
+}
+
+@media (max-width: 480px) {
+  .architecture-diagram .provider-title { font-size: 30px; }
+  .architecture-diagram .node-title { font-size: 29px; }
+  .architecture-diagram .application-title { font-size: 25px; }
+  .architecture-diagram .node-description { font-size: 23px; }
+  .architecture-diagram .application-description, .architecture-diagram .database-description { font-size: 17px; }
+  .architecture-diagram .diagram-badge text { font-size: 13px; }
+  .architecture-diagram .engine-chip text { font-size: 16px; }
+  .architecture-diagram .connection-label text { font-size: 18px; }
+  .architecture-diagram .status-chip text { font-size: 16px; letter-spacing: .3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study-container .diagram-container { transition: none; }
+  .case-study-container .diagram-container:hover { transform: none; outline-color: transparent; box-shadow: none; }
+  .architecture-diagram .architecture-node,
+  .architecture-diagram .architecture-node > .node-card { transition: none; }
+  .architecture-diagram .architecture-node:hover { transform: none; filter: none; }
+}
+
+.button { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; padding: 0 1.1rem; border: 1px solid transparent; border-radius: 10px; font-size: .83rem; font-weight: 640; text-decoration: none; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.button:hover { transform: translateY(-2px); }
+.button-primary { color: #fff; background: #2872de; box-shadow: 0 7px 24px rgba(33, 104, 215, .22), inset 0 1px rgba(255, 255, 255, .12); }
+.button-primary:hover { background: #3583f2; box-shadow: 0 10px 30px rgba(33, 104, 215, .32); }
+.button-quiet { border-color: var(--border-card); color: var(--text-soft); background: var(--surface-card); }
+.button-quiet:hover { border-color: var(--border-hover); color: var(--text-link-hover); background: var(--surface-card-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+  .button:hover { transform: none; }
+}
+
+@media (max-width: 780px) {
   :root { scroll-padding-top: 80px; }
+}
+
+::view-transition-old(root) {
+  animation: 220ms ease both route-exit;
+}
+
+::view-transition-new(root) {
+  animation: 220ms ease both route-enter;
+}
+
+@keyframes route-exit {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+
+@keyframes route-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
 }

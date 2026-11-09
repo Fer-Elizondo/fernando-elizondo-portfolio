@@ -26,6 +26,7 @@ describe('ProfessionalExperienceSection', () => {
     const areas = Array.from(fixture.nativeElement.querySelectorAll('.contribution-area')) as HTMLElement[];
 
     expect(areas).toHaveLength(3);
+    expect(areas.every((area) => area.getAttribute('tabindex') === '0')).toBe(true);
     expect(areas.map((area) => area.querySelector('h4')?.textContent?.trim())).toEqual(
       PROFESSIONAL_EXPERIENCE.areas.map((area) => area.title),
     );

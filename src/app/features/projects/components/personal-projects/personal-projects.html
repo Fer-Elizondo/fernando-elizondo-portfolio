@@ -1,0 +1,29 @@
+<section class="personal-projects section-shell section-block" id="proyectos-personales"
+  aria-labelledby="personal-projects-title" data-reveal>
+  <div class="projects-heading">
+    <p class="projects-eyebrow"><span></span> PROYECTO PERSONAL</p>
+    <h2 id="personal-projects-title">Proyectos <span>personales</span></h2>
+  </div>
+
+  <article class="personal-project-card" aria-labelledby="cloud-backend-lab-title">
+    <div class="project-copy">
+      <div class="project-labels">
+        <p class="project-category">LABORATORIO BACKEND</p>
+        <span class="featured-case-study">CASO DE ESTUDIO DESTACADO</span>
+      </div>
+      <h3 id="cloud-backend-lab-title">{{ project.title }}</h3>
+      <p class="project-description">{{ description }}</p>
+
+      <ul class="project-technologies" aria-label="Tecnologías de Cloud Backend Lab">
+        @for (technology of project.hero.stack; track technology) {
+          <li>{{ technology }}</li>
+        }
+      </ul>
+    </div>
+
+    <a class="case-study-link button button-primary" [routerLink]="['/case-studies', project.slug]">
+      Ver caso de estudio
+      <svg lucideArrowUpRight [size]="17" aria-hidden="true"></svg>
+    </a>
+  </article>
+</section>

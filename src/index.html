@@ -1,7 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="utf-8">
+  <script>
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      try {
+        const savedTheme = window.localStorage.getItem('fernando-portfolio-theme');
+        document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+  </script>
   <title>Fernando Elizondo | Desarrollador Full Stack</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
